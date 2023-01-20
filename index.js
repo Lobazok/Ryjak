@@ -1,10 +1,20 @@
 const colors = require("colors")
 
-const findAccount = (user, info) => {
+const findAccount = (user, info, res) => {
     if (typeof user === "object" && typeof info === "object") {
-        if (user.findIndex((u) => u.user === info.user) != -1) {
-            return user.findIndex((u) => u.user === info.user)
-        } else return "404"
+        console.log(user);
+        console.log(typeof user);
+        let index = user.findIndex((u) => u.user === info.name);
+        if (index != -1) {
+            console.log("#");
+            if (res) {
+                res.status(200).json(index)
+            } else return[200, index]
+        } else{
+            if (res) {
+                res.status(404).json(undefined)
+            } else return [404, undefined]
+        }
     } else if (user) {
         console.log("Ryjak error 001: user no especificados o incorrecta".red);
     } else {
@@ -13,11 +23,17 @@ const findAccount = (user, info) => {
 
 }
 
-const loginUser = (user, passwordUser) => {
+const loginUser = (user, passwordUser, res) => {
     if (typeof user === "object" && typeof passwordUser === "string") {
         if (user.password === passwordUser) {
-            return user
-        } else return "401"
+            if (res) {
+                res.status(200).json(user)
+            } else return [200, user]
+        } else{
+            if (res) {
+                res.status(401).json(undefined)
+            } else return [401, undefined]
+        }
     } else if (user) {
         console.log("Ryjak error 001: user no especificados o incorrecta".red);
     } else {
@@ -26,12 +42,19 @@ const loginUser = (user, passwordUser) => {
 
 }
 
-const login = (user, info) => {
+const login = (user, info, res) => {
     if (typeof user === "object" && typeof info === "object") {
         let index = findAccount(user, info)
-        if (index != "404") {
-            return loginUser(user[index], info.password)
-        } else return "404"
+        if (index[0] != 404) {
+            if (res) {
+                res.status(200).json(loginUser(user[index[1]], info.password)[1])
+            } else return [200, loginUser(user[index[1]], info.password)[1]]
+        } else {
+            if (res) {
+                res.status(404).json(undefined)
+            } else [404, undefined]
+        }
+        
     } else if (user) {
         console.log("Ryjak error 001: user no especificados o incorrecta".red);
     } else {
@@ -43,7 +66,9 @@ const signUP = (user, info) => {
     if (typeof user === "object" && typeof info === "object") {
         let newUser = { ...info, id: user.length + 1 };
         user.push(newUser);
-        return newUser;
+        if (res) {
+            res.status(200).json(newUser)
+        } else return [200, newUser]
     } else if (user) {
         console.log("Ryjak error 001: user no especificados o incorrecta".red);
     } else {
@@ -51,11 +76,15 @@ const signUP = (user, info) => {
     }
 }
 
-const loginOrSignUP = (user, info) => {
+const loginOrSignUP = (user, info,res) => {
     if (typeof user === "object" && typeof info === "object") {
-        if (login(user, info) != "404") {
-            return login(user, info)
-        } else return signUP(user, info)
+        if (login(user, info)[0] != 404) {
+            if (res) {
+                return res.status(200).json(login(user, info)[1])
+            } else return [200, login(user, info)[1]]
+        } else if (res) {
+            return res.status(200).json(signUP(user, info))
+        } else return [200, signUP(user, info)]
     } else if (user) {
         console.log("Ryjak error 001: user no especificados o incorrecta".red);
     } else {
