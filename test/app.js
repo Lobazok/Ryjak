@@ -2,7 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const { json } = require("express");
-const Ryjak = require("../modules/index.js")
+const {peticionGET, response} = require("../modules/index.js")
 const app = express();
 
 app.use(express.json());
@@ -21,11 +21,20 @@ app.use((req, res, next) => {
     } else next();
 })
 
+app.get("/user", async (req, res) => {
+    let data = await Ryjak.peticionGET("http://localhost:3007/Users")
+    response(res, data)
+})
+
+app.get("/user", async (req, res) => {
+    let data = await Ryjak.peticionGET("http://localhost:3007/Users")
+    response(res, [200, data], true)
+})
+
 let user = [];
 
-async function name() {
-    let as = await Ryjak.peticionGET("http://localhost:3007/Users")
-    console.log(as);
+async function peticionGET() {
+    
 }
 
 
