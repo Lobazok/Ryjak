@@ -8,7 +8,7 @@ const response = (res, array = [], bool = true) => {
     } else console.log("Ryjak error 001: array no especificado".red);
 }
 
-const peticionHTTP = async (url, jsonData, method = "GET") => {
+const requestHTTP = async (url, jsonData, method = "GET") => {
     if (url) {
         let opy = {
             method: method,
@@ -25,10 +25,10 @@ const peticionHTTP = async (url, jsonData, method = "GET") => {
             .catch(error => console.log(error))
 
         return data
-    } else console.log("Ryjak error 003: url en peticionHTTP no especificado".red);
+    } else console.log("Ryjak error 003: url en requestHTTP no especificado".red);
 }
 
-const peticionGET = async (url, jsonData) => {
+const requestGET = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "GET",
@@ -45,11 +45,11 @@ const peticionGET = async (url, jsonData) => {
             .catch(error => console.log(error))
 
         return data
-    } else console.log("Ryjak error 003: url en peticionHTTP no especificado".red);
+    } else console.log("Ryjak error 003: url en requestGET no especificado".red);
 
 }
 
-const peticionPOST = async (url, jsonData) => {
+const requestPOST = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "POST",
@@ -66,11 +66,11 @@ const peticionPOST = async (url, jsonData) => {
             .catch(error => console.log(error))
 
         return data
-    } else console.log("Ryjak error 003: url en peticionHTTP no especificado".red);
+    } else console.log("Ryjak error 003: url en requestPOST no especificado".red);
 
 }
 
-const peticionPUT = async (url, jsonData) => {
+const requestPUT = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "PUT",
@@ -87,11 +87,11 @@ const peticionPUT = async (url, jsonData) => {
             .catch(error => console.log(error))
 
         return data
-    } else console.log("Ryjak error 003: url en peticionHTTP no especificado".red);
+    } else console.log("Ryjak error 003: url en requestPUT no especificado".red);
 
 }
 
-const peticionPATCH = async (url, jsonData) => {
+const requestPATCH = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "PATCH",
@@ -108,11 +108,11 @@ const peticionPATCH = async (url, jsonData) => {
             .catch(error => console.log(error))
 
         return data
-    } else console.log("Ryjak error 003: url en peticionHTTP no especificado".red);
+    } else console.log("Ryjak error 003: url en requestPATCH no especificado".red);
 
 }
 
-const peticionDELETE = (url = "", jsonData = {}) => {
+const requestDELETE = (url = "", jsonData = {}) => {
     if (url) {
         let opy = {
             method: "DELETE",
@@ -129,16 +129,16 @@ const peticionDELETE = (url = "", jsonData = {}) => {
             .catch(error => console.log(error))
 
         return data
-    } else console.log("Ryjak error 003: url en peticionHTTP no especificado".red);
+    } else console.log("Ryjak error 003: url en requestDELETE no especificado".red);
 
 }
 
 module.exports = {
     response,
-    peticionHTTP,
-    peticionGET,
-    peticionPOST,
-    peticionPUT,
-    peticionPATCH,
-    peticionDELETE
+    requestHTTP,
+    requestGET,
+    requestPOST,
+    requestPUT,
+    requestPATCH,
+    requestDELETE
 }
