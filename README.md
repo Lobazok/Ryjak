@@ -9,7 +9,8 @@ app.get("/user", async (req, res) => {
     let data = await Ryjak.requestGET("http://localhost:3007/Users")
     response(res, data)
 })
-
+~~~
+~~~ JavaScript
 app.get("/user", async (req, res) => {
     let data = await Ryjak.requestGET("http://localhost:3007/Users")
     response(res, [200, data], true)
