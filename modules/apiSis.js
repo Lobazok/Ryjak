@@ -8,7 +8,7 @@ const response = (res, array = [], bool = true) => {
     } else console.log("Ryjak error 001: array no especificado".red);
 }
 
-const peticionHTTP = async (url = "", method = "GET", jsonData = {}) => {
+const peticionHTTP = async (url, jsonData, method = "GET") => {
     if (url) {
         let opy = {
             method: method,
@@ -28,7 +28,7 @@ const peticionHTTP = async (url = "", method = "GET", jsonData = {}) => {
     } else console.log("Ryjak error 003: url en peticionHTTP no especificado".red);
 }
 
-const peticionGET = async (url = "", jsonData = {}) => {
+const peticionGET = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "GET",
@@ -49,7 +49,7 @@ const peticionGET = async (url = "", jsonData = {}) => {
 
 }
 
-const peticionPOST = async (url = "", jsonData = {}) => {
+const peticionPOST = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "POST",
@@ -70,7 +70,7 @@ const peticionPOST = async (url = "", jsonData = {}) => {
 
 }
 
-const peticionPUT = async (url = "", jsonData = {}) => {
+const peticionPUT = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "PUT",
@@ -91,7 +91,7 @@ const peticionPUT = async (url = "", jsonData = {}) => {
 
 }
 
-const peticionPATCH = async (url = "", jsonData = {}) => {
+const peticionPATCH = async (url, jsonData) => {
     if (url) {
         let opy = {
             method: "PATCH",
