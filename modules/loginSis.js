@@ -92,10 +92,11 @@ const loginOrSignUP = (user, info,res) => {
     }
 }
 
+
 module.exports = {
     findAccount,
     loginUser,
     login,
     signUP,
-    loginOrSignUP
+    loginOrSignUP,
 }
