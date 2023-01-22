@@ -1,14 +1,14 @@
-const { peticionHTTP, peticionGET, peticionPOST, peticionPUT, peticionPATCH, peticionDELETE } = require("./requestSis")
+const { requestHTTP, requestGET, requestPOST, requestPATCH, requestPUT, requestDELETE } = require("./requestSis")
 const { response } = require("./respondeSis")
 
 const Ryjak = {
-    response      : response      ,
-    peticionHTTP  : peticionHTTP  ,
-    peticionGET   : peticionGET   ,
-    peticionPOST  : peticionPOST  ,
-    peticionPUT   : peticionPUT   ,
-    peticionPATCH : peticionPATCH ,
-    peticionDELETE: peticionDELETE
+    response     : response     ,
+    requestHTTP  : requestHTTP  ,
+    requestGET   : requestGET   ,
+    requestPOST  : requestPOST  ,
+    requestPATCH : requestPATCH ,
+    requestPUT   : requestPUT   ,
+    requestDELETE: requestDELETE
 }
 
 module.exports = Ryjak
