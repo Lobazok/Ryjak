@@ -78,7 +78,7 @@ const onlyLogin = (user, info, si, no) => {
     if (user && info && typeof si == "function" && typeof no == "function") {
         if (login(user, info)[0] === 200) {
             si()
-        } else { si() }
+        } else no() 
     } else console.log("Ryjak eror 004: la funcion onlyLogin no obtuvo los parametros correctos");
 }
 const onlyNoExisUser = async (user, info, no, si) => {
