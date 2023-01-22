@@ -1,4 +1,4 @@
-const { findUser, validUser, login,  createUser, onlyLogin } = require("./loginSis")
+const { findUser, validUser, login,  createUser, onlyLogin, onlyNoExisUser } = require("./loginSis")
 const { response, peticionHTTP, peticionGET, peticionPOST, peticionPUT, peticionPATCH, peticionDELETE } = require("./API/indexApi")
 
 const Ryjak = {
@@ -7,6 +7,7 @@ const Ryjak = {
     login         : login,
     createUser    : createUser,
     onlyLogin     : onlyLogin,
+    onlyNoExisUser: onlyNoExisUser,
     response      : response,
     peticionHTTP  : peticionHTTP,
     peticionGET   : peticionGET,
